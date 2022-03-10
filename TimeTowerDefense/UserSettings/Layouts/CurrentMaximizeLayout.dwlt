@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 37032
+  controlID: 2525
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 37033
+  controlID: 2493
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 37010
+  controlID: 2494
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,7 +226,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 04fcfeff
+      m_ExpandedIDs: 5aedffff84830000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -377,8 +377,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 24.8}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 24.8}
       snapCorner: 0
       id: unity-transform-toolbar
       index: 0
@@ -638,7 +638,6 @@ MonoBehaviour:
     - {fileID: -3337386212655929974, guid: 1e2054cc0a458f54caf9e8ea9ffdcc6b, type: 2}
     - {fileID: 7698191035630772689, guid: 6706b35f230772f4389df5968ea266c2, type: 2}
     - {fileID: 6452318661661674911, guid: 39030b1553dbcd64683b252eafca1d6d, type: 2}
-    - {fileID: 1963907366284388561, guid: abbefabe64fe6a642a57d7f98d56c9ec, type: 2}
     m_ValueSerializationHelper:
     - e00: 0.48196083
       e01: 0
@@ -664,22 +663,6 @@ MonoBehaviour:
       e11: 1.1749415
       e12: 0
       e13: 159.39159
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
       e20: 0
       e21: 0
       e22: 1
@@ -739,8 +722,8 @@ MonoBehaviour:
     y: 432.8
     width: 1104.8
     height: 298
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -801,9 +784,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: ce620000
-    m_LastClickedID: 25294
-    m_ExpandedIDs: 00000000a462000000ca9a3bffffff7f
+    m_SelectedIDs: 4c640000
+    m_LastClickedID: 25676
+    m_ExpandedIDs: 000000003664000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -831,7 +814,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a462000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000003664000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -856,10 +839,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 50d50000
-    m_LastClickedInstanceID: 54608
+    m_SelectedInstanceIDs: 94830000
+    m_LastClickedInstanceID: 33684
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000845e0000ea6200005a6a000084620000d68100008a950000
+    m_ExpandedInstanceIDs: c6230000845e0000ea6200005a6a000084620000d6810000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -934,8 +917,8 @@ MonoBehaviour:
     y: 0
     width: 431.19995
     height: 730.8
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -975,8 +958,8 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 54608
-  m_LastVerticalScrollValue: 838.4
+  m_LastInspectedObjectInstanceID: 33684
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
