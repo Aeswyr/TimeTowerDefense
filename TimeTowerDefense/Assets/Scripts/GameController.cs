@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : Singleton<GameController>
 {
@@ -12,6 +13,8 @@ public class GameController : Singleton<GameController>
     [SerializeField] private GameObject hudCanvas;
     [SerializeField] private ModeHandler playerMode;
     [SerializeField] private ClockController clockController;
+    [SerializeField] private TextMeshProUGUI gameStateText;
+    public bool lossFlag = false;
     
     private Mode gamemode;
     public Mode Gamemode {
@@ -58,6 +61,14 @@ public class GameController : Singleton<GameController>
         }
         if (tickDiff > 0)
             tickDiff--;
+
+        if (toSpawn.Count == 0 && spawned.Count == 0 && !lossFlag) {
+            gameStateText.gameObject.SetActive(true);
+            gameStateText.text = "Win!!";
+        } else if (lossFlag) {
+            gameStateText.gameObject.SetActive(true);
+            gameStateText.text = "Lose...";
+        }
     }
 
     public Grid GetLevelGrid() {

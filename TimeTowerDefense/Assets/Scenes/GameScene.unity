@@ -351,6 +351,17 @@ MonoBehaviour:
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 0
+--- !u!114 &523390242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4140434304561103787, guid: eb75834fff2573e42b121532dc2c8cea, type: 3}
+  m_PrefabInstance: {fileID: 1675936779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &945392067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19293,7 +19304,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 645284921
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1024899592
 RectTransform:
@@ -19427,6 +19438,10 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 403234655114625912, guid: f287d01c30fce2e418ab4dcf840dee1b, type: 3}
+    - target: {fileID: 150180306717655872, guid: 12ac0aeee8728be4fac199fa37fc8e3e, type: 3}
+      propertyPath: gameStateText
+      value: 
+      objectReference: {fileID: 523390242}
     - target: {fileID: 150180306717655872, guid: 12ac0aeee8728be4fac199fa37fc8e3e, type: 3}
       propertyPath: clockController
       value: 
@@ -19563,7 +19578,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 645284921
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1493526202
 RectTransform:
