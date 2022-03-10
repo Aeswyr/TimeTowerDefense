@@ -16,5 +16,5 @@ public class GameController : Singleton<GameController>
 }
 
 public enum Mode {
-    DEFAULT, PLACE, TIME, MOVE
+    DEFAULT, PLACE, MOVE, TIME, 
 }

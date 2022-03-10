@@ -13,7 +13,9 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private MovementHandler move;
     [SerializeField] private GroundedCheck ground;
     [SerializeField] private GameObject towerIndicatorPrefab;
+    [SerializeField] private ModeHandler mode;
     private GameObject towerIndicator;
+    private bool modeSelect;
 
 
     private bool grounded;
@@ -33,7 +35,7 @@ public class PlayerHandler : MonoBehaviour
         if (grounded && !prevGrounded)
             animator.SetTrigger("land");
 
-        if (input.dir != 0) {
+        if (!modeSelect && input.dir != 0) {
             sprite.flipX = input.dir < 0;
             move.UpdateMovement(input.dir);
         } else {
@@ -41,12 +43,18 @@ public class PlayerHandler : MonoBehaviour
         }
 
         if (input.move.pressed) {
-            move.StartAcceleration(input.dir);
-            animator.SetBool("running", true);
+            if (modeSelect) {
+                mode.Increment((int)input.dir);
+            } else {
+                move.StartAcceleration(input.dir);
+                animator.SetBool("running", true);
+            }
+
         }
 
         if (input.move.released) {
-            move.StartDeceleration();
+            if (!modeSelect)
+                move.StartDeceleration();
         }
 
         if (input.jump.pressed) {
@@ -57,18 +65,15 @@ public class PlayerHandler : MonoBehaviour
             animator.SetBool("grounded", grounded && rbody.velocity.y < 1);
         }
 
-        if (input.mode.pressed) {
-            if (towerIndicator == null) {
-                towerIndicator = Instantiate(towerIndicatorPrefab);
-            } else {
-                Destroy(towerIndicator);
-                towerIndicator = null;
-            }
-        }
+        if (input.mode.pressed)
+            HandleModePress();
+        if (input.mode.released)
+            HandleModeRelease();
 
         if (towerIndicator != null && !grounded) {
             Destroy(towerIndicator);
             towerIndicator = null;
+            mode.ForceMode(Mode.MOVE);
         }
 
         if (towerIndicator != null) {
@@ -76,5 +81,24 @@ public class PlayerHandler : MonoBehaviour
             towerIndicator.transform.position = levelGrid.CellToWorld(levelGrid.WorldToCell(this.transform.position)) + new Vector3(0, 1, 0);
         }
         
+    }
+
+    private void HandleModePress() {
+        if (GameController.Instance.Gamemode == Mode.PLACE) {
+            Destroy(towerIndicator);
+            towerIndicator = null;
+        }
+        move.StartDeceleration();
+        modeSelect = true;
+        mode.gameObject.SetActive(true);
+    }
+
+    private void HandleModeRelease() {
+        mode.gameObject.SetActive(false);
+        modeSelect = false;
+        GameController.Instance.Gamemode = mode.GetMode();
+        if (GameController.Instance.Gamemode == Mode.PLACE) {
+            towerIndicator = Instantiate(towerIndicatorPrefab);
+        }
     }
 }
