@@ -9,7 +9,7 @@ public class PrefabList : ScriptableObject {
 
     public GameObject Get(string name) {
         foreach (var pair in prefabs) {
-            if (pair.name == name)
+            if (name.Equals(pair.name))
                 return pair.obj;
         }
         return null;

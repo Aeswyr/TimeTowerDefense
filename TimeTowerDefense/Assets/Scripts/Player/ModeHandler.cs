@@ -26,4 +26,9 @@ public class ModeHandler : MonoBehaviour
         selector.transform.localPosition = new Vector3(3.125f * (mode - 1), 0, 0);
     }
 
+    public void SyncMode() {
+        mode = (int)GameController.Instance.Gamemode - 1;
+        selector.transform.localPosition = new Vector3(3.125f * (mode - 1), 0, 0);
+    }
+
 }

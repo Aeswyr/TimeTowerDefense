@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TowerList
   m_EditorClassIdentifier: 
   prefabs:
-  - name: Beam
+  - name: beam
     obj: {fileID: 3985164589771091491, guid: 613d083218c63c3408983c950ed524b0, type: 3}

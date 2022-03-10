@@ -13,6 +13,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private MovementHandler move;
     [SerializeField] private GroundedCheck ground;
     [SerializeField] private GameObject towerIndicatorPrefab;
+    [SerializeField] private PrefabList towerList;
     [SerializeField] private ModeHandler mode;
     private GameObject towerIndicator;
     private bool modeSelect;
@@ -81,6 +82,15 @@ public class PlayerHandler : MonoBehaviour
             towerIndicator.transform.position = levelGrid.CellToWorld(levelGrid.WorldToCell(this.transform.position)) + new Vector3(0, 1, 0);
         }
         
+        if (input.interact.pressed) {
+            if (GameController.Instance.Gamemode == Mode.PLACE
+                && GameController.Instance.TrySpendParts(1)) {
+                Instantiate(towerList.Get("beam"), towerIndicator.transform.position, towerList.Get("beam").transform.rotation);
+            }
+            if (GameController.Instance.Gamemode == Mode.MOVE) {
+                
+            }
+        }
     }
 
     private void HandleModePress() {
