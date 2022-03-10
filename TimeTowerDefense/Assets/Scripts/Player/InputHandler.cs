@@ -15,15 +15,24 @@ public class InputHandler : MonoBehaviour
     public ButtonState mode {
         get {return m_mode;}
     }
-    private ButtonState m_mode, m_jump;
+    public ButtonState move {
+        get {return m_move;}
+    }
+    public ButtonState interact {
+        get {return m_interact;}
+    }
+    private ButtonState m_mode, m_jump, m_move, m_interact;
 
     private void FixedUpdate() {
         this.m_jump.Reset();
         this.m_mode.Reset();
+        this.m_move.Reset();
+        this.m_interact.Reset();
     }
 
     public void Move(InputAction.CallbackContext ctx) {
         this.dir = ctx.ReadValue<float>();
+        this.m_move.Set(ctx);
     }
 
     public void Jump(InputAction.CallbackContext ctx) {
@@ -34,6 +43,10 @@ public class InputHandler : MonoBehaviour
         this.m_mode.Set(ctx);
     }
 
+    public void Interact(InputAction.CallbackContext ctx) {
+        this.m_interact.Set(ctx);
+    }
+
     public struct ButtonState {
         private bool firstFrame;
         public bool down {
@@ -42,8 +55,6 @@ public class InputHandler : MonoBehaviour
         }
         public bool pressed {
             get {
-                if (down)
-                    Debug.Log($"{down}, {firstFrame}");
                 return down && firstFrame;
             }
         }
