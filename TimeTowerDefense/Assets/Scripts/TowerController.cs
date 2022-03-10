@@ -33,6 +33,7 @@ public class TowerController : MonoBehaviour
 
     public void Reload() {
         shots = MAX_SHOTS;
+        ammo.Set((float)shots / MAX_SHOTS);
     }
 
     private EnemyController NextTarget() {

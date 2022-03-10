@@ -40,7 +40,7 @@ public class GameController : Singleton<GameController>
     int id = 1;
     void Start() {
         toSpawn = spawnOrder.GetSorted();
-        AddParts(2);
+        AddParts(1);
     }
 
     void FixedUpdate() {

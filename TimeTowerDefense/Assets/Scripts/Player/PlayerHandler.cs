@@ -15,6 +15,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private GameObject towerIndicatorPrefab;
     [SerializeField] private PrefabList towerList;
     [SerializeField] private ModeHandler mode;
+    [SerializeField] private LayerMask interactMask;
     private GameObject towerIndicator;
     private bool modeSelect;
 
@@ -88,7 +89,10 @@ public class PlayerHandler : MonoBehaviour
                 Instantiate(towerList.Get("beam"), towerIndicator.transform.position, towerList.Get("beam").transform.rotation);
             }
             if (GameController.Instance.Gamemode == Mode.MOVE) {
-                
+                Collider2D turret = Physics2D.OverlapPoint(transform.position, interactMask);
+                if (turret != null && GameController.Instance.TrySpendAmmo(1)) {
+                    turret.transform.parent.gameObject.GetComponent<TowerController>().Reload();
+                }
             }
         }
     }

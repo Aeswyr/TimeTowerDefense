@@ -9,12 +9,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private LayerMask wallMask;
     [SerializeField] private GroundedCheck ground;
+    [SerializeField] private GameObject indParts, indAmmo;
     private long spawnTick;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnTick = HUDController.Instance.GetTick();
+        if (spawnData.carry == CarryType.AMMO)
+            indAmmo.SetActive(true);
+        if (spawnData.carry == CarryType.PARTS)
+            indParts.SetActive(true);
     }
 
     // Update is called once per frame

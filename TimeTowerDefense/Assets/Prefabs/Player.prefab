@@ -289,6 +289,9 @@ MonoBehaviour:
   towerIndicatorPrefab: {fileID: 8174575598132645923, guid: d2581a35e13830543b537bedd0572b75, type: 3}
   towerList: {fileID: 11400000, guid: 3b4ee44898e0e334fb5fdb40209c62d0, type: 2}
   mode: {fileID: 3817988392716766152}
+  interactMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &8305404781717203957
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ MonoBehaviour:
     id: 0
   - type: 1
     spawnTime: 6
-    carry: 0
+    carry: 1
     id: 0
   - type: 1
     spawnTime: 8
