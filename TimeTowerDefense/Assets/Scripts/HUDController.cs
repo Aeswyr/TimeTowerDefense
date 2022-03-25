@@ -41,6 +41,10 @@ public class HUDController : Singleton<HUDController>
         return dif;
     }
 
+    public void ForceTick(long newTick) {
+        time = newTick;
+    }
+
     public long GetTick() {
         return time;
     }

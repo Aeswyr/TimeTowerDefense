@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour
     private List<SpawnData> toSpawn;
     private List<EnemyController> spawned = new List<EnemyController>();
     public bool lossFlag = false;
+    bool endFlagReady = true;
     private float timeMod;
 
     public long tickDiff {
@@ -24,6 +25,7 @@ public class LevelController : MonoBehaviour
     void Start() {
         toSpawn = spawnOrder.GetSorted();
         GameController.Instance.AddParts(1);
+        timeMod = Time.time;
     }
 
     // Update is called once per frame
@@ -44,15 +46,21 @@ public class LevelController : MonoBehaviour
         if (tickDiff > 0)
             tickDiff--;
 
-        if (toSpawn.Count == 0 && spawned.Count == 0 && !lossFlag) {
+        if (endFlagReady && toSpawn.Count == 0 && spawned.Count == 0 && !lossFlag) {
             GameController.Instance.SetVictoryState(true);
-        } else if (lossFlag) {
+            endFlagReady = false;
+        } else if (endFlagReady && lossFlag) {
             GameController.Instance.SetVictoryState(false);
+            endFlagReady = false;
         }
     }
 
     public Grid GetLevelGrid() {
         return levelGrid;
+    }
+
+    public GameObject GetLevelObjectParent() {
+        return levelObjectParent;
     }
 
     public Vector3 GetGoal() {

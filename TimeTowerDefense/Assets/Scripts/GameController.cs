@@ -10,7 +10,10 @@ public class GameController : Singleton<GameController>
     [SerializeField] private ModeHandler playerMode;
     [SerializeField] private ClockController clockController;
     [SerializeField] private TextMeshProUGUI gameStateText;
-    [SerializeField] private LevelController currentLevel;
+    private LevelController currentLevel;
+    [SerializeField] private PrefabList levelList;
+    [SerializeField] private GameObject player;
+    int currLvl;
     public long tickDiff {
         get {return currentLevel.tickDiff;}
     }
@@ -32,6 +35,10 @@ public class GameController : Singleton<GameController>
     }
 
     private int ammo, parts;
+
+    private void Start() {
+        LoadNextLevel();
+    }
 
     public Grid GetLevelGrid() {
         return currentLevel.GetLevelGrid();
@@ -55,10 +62,18 @@ public class GameController : Singleton<GameController>
 
     public void SetVictoryState(bool state) {
         gameStateText.gameObject.SetActive(true);
-        if (state)
+        if (state) {
             gameStateText.text = "Win!!";
+            PlayerPrefs.SetInt("FurthestLevel", currLvl + 1);
+            if (levelList.Get(currLvl + 1) != null)
+                StartCoroutine(DoLevelTransition());
+        }
         else
             gameStateText.text = "Lose...";
+    }
+
+    public GameObject GetLevelObjectParent() {
+        return currentLevel.GetLevelObjectParent();
     }
 
     public bool TrySpendAmmo(int count) {
@@ -107,8 +122,20 @@ public class GameController : Singleton<GameController>
         currentLevel.StartRollback(newTick);
     }
 
-    public void ResetLevelData() {
-        HUDController.Instance.ForceTickDiff(0);
+    public void LoadNextLevel() {
+        gameStateText.gameObject.SetActive(false);
+        HUDController.Instance.ForceTick(0);
+        currLvl = PlayerPrefs.GetInt("FurthestLevel");
+        if (currentLevel != null)
+            Destroy(currentLevel.gameObject);
+        currentLevel = Instantiate(levelList.Get(currLvl)).GetComponent<LevelController>();
+        player.transform.position = GetGoal();
+    }
+
+    public IEnumerator DoLevelTransition() {
+        yield return new WaitForSeconds(3f);
+
+        LoadNextLevel();
     }
 
 }

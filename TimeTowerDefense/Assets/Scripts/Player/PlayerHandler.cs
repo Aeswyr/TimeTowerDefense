@@ -86,7 +86,8 @@ public class PlayerHandler : MonoBehaviour
         if (input.interact.pressed) {
             if (GameController.Instance.Gamemode == Mode.PLACE
                 && GameController.Instance.TrySpendParts(1)) {
-                Instantiate(towerList.Get("beam"), towerIndicator.transform.position, towerList.Get("beam").transform.rotation);
+                GameObject newTower = Instantiate(towerList.Get("beam"), towerIndicator.transform.position, towerList.Get("beam").transform.rotation);
+                newTower.transform.SetParent(GameController.Instance.GetLevelObjectParent().transform);
             }
             if (GameController.Instance.Gamemode == Mode.MOVE) {
                 Collider2D turret = Physics2D.OverlapPoint(transform.position, interactMask);
