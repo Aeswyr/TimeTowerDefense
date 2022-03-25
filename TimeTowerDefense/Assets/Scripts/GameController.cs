@@ -14,6 +14,7 @@ public class GameController : Singleton<GameController>
     [SerializeField] private PrefabList levelList;
     [SerializeField] private GameObject player;
     int currLvl;
+    public bool unpaused = false;
     public long tickDiff {
         get {return currentLevel.tickDiff;}
     }
@@ -50,6 +51,10 @@ public class GameController : Singleton<GameController>
 
     public List<EnemyController> GetEnemies() {
         return currentLevel.GetEnemies();
+    }
+
+    public void StartLevel() {
+        currentLevel.StartLevel();
     }
 
     public void RemoveEnemy(EnemyController ctrl) {
@@ -130,6 +135,7 @@ public class GameController : Singleton<GameController>
             Destroy(currentLevel.gameObject);
         currentLevel = Instantiate(levelList.Get(currLvl)).GetComponent<LevelController>();
         player.transform.position = GetGoal();
+        unpaused = false;
     }
 
     public IEnumerator DoLevelTransition() {

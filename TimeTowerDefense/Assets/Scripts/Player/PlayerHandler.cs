@@ -90,9 +90,9 @@ public class PlayerHandler : MonoBehaviour
                 newTower.transform.SetParent(GameController.Instance.GetLevelObjectParent().transform);
             }
             if (GameController.Instance.Gamemode == Mode.MOVE) {
-                Collider2D turret = Physics2D.OverlapPoint(transform.position, interactMask);
-                if (turret != null && GameController.Instance.TrySpendAmmo(1)) {
-                    turret.transform.parent.gameObject.GetComponent<TowerController>().Reload();
+                Collider2D obj = Physics2D.OverlapPoint(transform.position, interactMask);
+                if (obj != null) {
+                    obj.GetComponent<InteractController>().OnInteract();
                 }
             }
         }

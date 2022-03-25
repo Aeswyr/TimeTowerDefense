@@ -10,11 +10,14 @@ public class LevelController : MonoBehaviour
     [SerializeField] private GameObject levelGoal;
     [SerializeField] private SpawnOrder spawnOrder;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private int startingParts = 1;
+    [SerializeField] private int startingAmmo = 0;
     private List<SpawnData> toSpawn;
     private List<EnemyController> spawned = new List<EnemyController>();
     public bool lossFlag = false;
     bool endFlagReady = true;
     private float timeMod;
+    private bool started = false;
 
     public long tickDiff {
         get;
@@ -22,15 +25,24 @@ public class LevelController : MonoBehaviour
     }
     int id = 1;
     // Start is called before the first frame update
-    void Start() {
+    public void StartLevel() {
         toSpawn = spawnOrder.GetSorted();
-        GameController.Instance.AddParts(1);
         timeMod = Time.time;
+        started = true;
+        GameController.Instance.unpaused = true;
+    }
+
+    void Start() {
+        GameController.Instance.AddParts(startingParts);
+        GameController.Instance.AddAmmo(startingAmmo);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!started)
+            return;
+        
         if (tickDiff == 0 && toSpawn.Count > 0 && Time.time > toSpawn[0].spawnTime + timeMod) {
             GameObject enemy = Instantiate(enemyPrefab, levelObjectParent.transform);
             enemy.transform.position = spawnPoint.transform.position;
@@ -43,6 +55,7 @@ public class LevelController : MonoBehaviour
             spawned.Add(controller);
             toSpawn.RemoveAt(0);
         }
+
         if (tickDiff > 0)
             tickDiff--;
 
